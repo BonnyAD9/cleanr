@@ -54,7 +54,7 @@ fn default_configs() -> Vec<Box<dyn CleanConf>> {
         Box::new(clean_conf::ExistRun::new(
             "gleam clean",
             vec![],
-            vec![Path::new("Cargo.toml").into()],
+            vec![Path::new("gleam.toml").into()],
             "gleam",
             ["clean"],
             None,
