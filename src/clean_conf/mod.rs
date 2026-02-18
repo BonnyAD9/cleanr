@@ -2,9 +2,10 @@ use std::path::Path;
 
 use crate::err::Result;
 
+mod dotnet;
 mod exist_run;
 
-pub use self::exist_run::*;
+pub use self::{dotnet::*, exist_run::*};
 
 pub trait CleanConf {
     fn name(&self) -> &str;

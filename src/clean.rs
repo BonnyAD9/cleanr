@@ -6,7 +6,12 @@ use std::{
 
 use crate::{clean_conf::CleanConf, err::Result};
 
-pub fn direct(mut dirs: Vec<PathBuf>, confs: &mut [Box<dyn CleanConf>], skip: Vec<String>, dry: bool) {
+pub fn direct(
+    mut dirs: Vec<PathBuf>,
+    confs: &mut [Box<dyn CleanConf>],
+    skip: Vec<String>,
+    dry: bool,
+) {
     'outer: while let Some(d) = dirs.pop() {
         if !d.is_dir() {
             continue;

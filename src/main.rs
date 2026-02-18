@@ -67,5 +67,6 @@ fn default_configs() -> Vec<Box<dyn CleanConf>> {
             ["-rf", ".zig-cache"],
             None,
         )),
+        Box::new(clean_conf::Dotnet),
     ]
 }
