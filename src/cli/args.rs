@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use pareg::Pareg;
 
 use crate::err::Result;
@@ -6,7 +8,9 @@ use super::help::help;
 
 #[derive(Debug, Default)]
 pub struct Args {
-    pub dirs: Vec<String>,
+    pub dirs: Vec<PathBuf>,
+    pub skip: Vec<String>,
+    pub dry: bool,
 }
 
 impl Args {
@@ -21,6 +25,8 @@ impl Args {
                     helped = true;
                 }
                 "-d" | "--directory" => res.dirs.push(args.next_arg()?),
+                "-s" | "--skip" => res.skip.push(args.next_arg()?),
+                "--dry" => res.dry = true,
                 v if v.starts_with("-") => {
                     let msg = format!("If you want to clean directory `{v}` use `-d`");
                     return args.err_unknown_argument().hint(msg).err()?;
@@ -30,7 +36,7 @@ impl Args {
         }
 
         if res.dirs.is_empty() && !helped {
-            res.dirs.push(".".to_string());
+            res.dirs.push(".".into());
         }
 
         Ok(res)
