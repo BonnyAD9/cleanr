@@ -1,6 +1,7 @@
 use std::{path::Path, process::ExitCode};
 
 use pareg::Pareg;
+use termal::eprintacln;
 
 use crate::{clean_conf::CleanConf, cli::Args, err::Result};
 
@@ -13,7 +14,7 @@ fn main() -> ExitCode {
     match start() {
         Ok(()) => ExitCode::SUCCESS,
         Err(e) => {
-            eprintln!("error: {e}");
+            eprintacln!("{'r}error: {'_}{e}");
             ExitCode::FAILURE
         }
     }

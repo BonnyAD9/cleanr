@@ -5,4 +5,5 @@ edition = "2024"
 
 [dependencies]
 pareg = "0.9.1"
+termal = "4.2.1"
 thiserror = "2.0.12"
